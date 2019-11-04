@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import { Box, Grommet, ResponsiveContext, } from 'grommet';
+import React, { Component } from 'react';
 import './App.css';
+import { AppBar } from './base/AppBar';
+import { AppSidebar } from './base/AppSidebar';
+import { DeploymentPane } from './panes/DeploymentPane';
+import { theme } from './theme';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type AppState = {
+    showSidebar: boolean
 }
 
-export default App;
+export default class App extends Component<{}, AppState> {
+
+    constructor(props: Readonly<{}>) {
+        super(props);
+        this.state = { showSidebar: false };
+    }
+
+    toggleSidebar = () => {
+        const {showSidebar} = this.state;
+        this.setState({
+            showSidebar: !showSidebar
+        });
+    };
+
+    render() {
+        const {showSidebar} = this.state;
+
+        return (
+            <Grommet theme={theme}>
+                <ResponsiveContext.Consumer>
+                    {size => (<Box fill>
+                        <AppBar toggleSidebar={this.toggleSidebar} />
+                        <Box direction='row' flex overflow={{horizontal: 'hidden'}}>
+                            <Box flex>
+                                <DeploymentPane
+                                    index={0}
+                                    object={{name: "hello"}}
+                                />
+                            </Box>
+                            <AppSidebar
+                                show={showSidebar}
+                                size={size}
+                                toggle={this.toggleSidebar}
+                            />
+                        </Box>
+                    </Box>)}
+                </ResponsiveContext.Consumer>
+            </Grommet>
+        );
+    }
+}
+

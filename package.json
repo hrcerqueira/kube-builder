@@ -7,16 +7,20 @@
     "@types/node": "12.12.5",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
+    "grommet": "^2.7.11",
+    "grommet-icons": "^4.3.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
+    "styled-components": "^4.4.1",
     "typescript": "3.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "schema": "for f in schema/json/*; do n=$(basename $f); o=\"schema/ts/\"${n%.*}\".d.ts\"; json2ts $f $o; done;"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "^7.1.0"
   }
 }
