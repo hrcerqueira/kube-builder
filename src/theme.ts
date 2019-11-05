@@ -1,7 +1,7 @@
 export const theme = {
     global: {
         colors: {
-            brand: '#228BE6',
+            brand: '#3d6fde',
         },
         font: {
             family: 'Roboto',

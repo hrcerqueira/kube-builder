@@ -2,23 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cfaa523-b7f4-427b-9a41-e078a453bee0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/AppBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/AppSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/k8s-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kinds/Deployment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kinds/K8sObject.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/panes/DeploymentPane.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/panes/ObjectPane.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/panes/PaneProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/editor/DescriptorEditor.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/editor/panes/PaneFactory.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/k8s/K8sKinds.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/k8s/model/K8sObject.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/descriptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/root.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kinds/Deployment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/k8s/model/Deployment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kinds/K8sObject.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panes/DeploymentPane.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/DeploymentPane.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panes/ObjectPane.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/ObjectPane.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/panes/PaneProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/PaneProps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,10 +55,19 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="$USER_HOME$/.nvm/versions/node/v6.3.1/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/editor" />
+      <recent name="$PROJECT_DIR$/src/k8s/model" />
+      <recent name="$PROJECT_DIR$/src/k8s" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -154,8 +163,16 @@
       <option name="presentableId" value="Default" />
       <updated>1572704247534</updated>
       <workItem from="1572704251279" duration="8879000" />
-      <workItem from="1572870469164" duration="1926000" />
+      <workItem from="1572870469164" duration="14030000" />
     </task>
+    <task id="LOCAL-00001" summary="Starts base look and feel and brings in kubernetes json schema.">
+      <created>1572880450701</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572880450701</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,5 +190,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="Starts base look and feel and brings in kubernetes json schema." />
+    <option name="LAST_COMMIT_MESSAGE" value="Starts base look and feel and brings in kubernetes json schema." />
   </component>
 </project>

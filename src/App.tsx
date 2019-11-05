@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { AppBar } from './base/AppBar';
 import { AppSidebar } from './base/AppSidebar';
-import { DeploymentPane } from './panes/DeploymentPane';
+import { DescriptorEditor } from './editor/DescriptorEditor';
 import { theme } from './theme';
 
 type AppState = {
@@ -34,10 +34,7 @@ export default class App extends Component<{}, AppState> {
                         <AppBar toggleSidebar={this.toggleSidebar} />
                         <Box direction='row' flex overflow={{horizontal: 'hidden'}}>
                             <Box flex>
-                                <DeploymentPane
-                                    index={0}
-                                    object={{name: "hello"}}
-                                />
+                                <DescriptorEditor />
                             </Box>
                             <AppSidebar
                                 show={showSidebar}
