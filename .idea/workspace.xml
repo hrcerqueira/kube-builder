@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2cfaa523-b7f4-427b-9a41-e078a453bee0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/AppBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base/AppSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/editor/DescriptorEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/DescriptorEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/editor/panes/DeploymentPane.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/DeploymentPane.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/editor/panes/ObjectPane.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/ObjectPane.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/editor/panes/PaneProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/panes/PaneProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/descriptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/descriptor.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +148,7 @@
       <updated>1572704247534</updated>
       <workItem from="1572704251279" duration="8879000" />
       <workItem from="1572870469164" duration="14596000" />
-      <workItem from="1572992145057" duration="10376000" />
+      <workItem from="1572992145057" duration="13142000" />
     </task>
     <task id="LOCAL-00001" summary="Starts base look and feel and brings in kubernetes json schema.">
       <created>1572880450701</created>
@@ -179,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572999394246</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Converts everything to the new react hooks api.">
+      <created>1573046810666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573046810666</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +202,7 @@
     <MESSAGE value="Starts base look and feel and brings in kubernetes json schema." />
     <MESSAGE value="Abstraction for k8s kinds and the respective edit panes." />
     <MESSAGE value="Improved pane abstraction. Edits name and api version." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved pane abstraction. Edits name and api version." />
+    <MESSAGE value="Converts everything to the new react hooks api." />
+    <option name="LAST_COMMIT_MESSAGE" value="Converts everything to the new react hooks api." />
   </component>
 </project>
