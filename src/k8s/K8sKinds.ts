@@ -1,9 +1,9 @@
 import { DeploymentKindDescriptor } from './model/Deployment';
-import { KindNames } from './model/K8sObject';
+import { K8sObjectImpl, KindDescriptor, KindName } from './model/K8sObject';
 
 
 export type KindsMap = {
-    [KindNames.Deployment]: DeploymentKindDescriptor
+    [key: string]: KindDescriptor<any>
 }
 
 export class K8sKinds {
@@ -14,7 +14,7 @@ export class K8sKinds {
 
     private constructor() {
         this.kinds = {
-            Deployment: new DeploymentKindDescriptor()
+            [KindName.Deployment]: new DeploymentKindDescriptor()
         }
     }
 
@@ -26,4 +26,28 @@ export class K8sKinds {
         return K8sKinds._instance;
     }
 
+    private getDescriptor(kind: string) {
+        const descriptor: KindDescriptor<any> = this.kinds[kind];
+
+        if (!descriptor) {
+            throw "unknown kind " + kind;
+        }
+
+        return descriptor;
+    }
+
+    create(kind: string, name: string): K8sObjectImpl {
+        const descriptor = this.getDescriptor(kind);
+
+        const apiVersion = descriptor.supportedVersions[0];
+        return descriptor.create({
+           apiVersion,
+            name,
+            kind
+        });
+    }
+
+    supportedVersions(kind: string) {
+        return this.getDescriptor(kind).supportedVersions;
+    }
 }

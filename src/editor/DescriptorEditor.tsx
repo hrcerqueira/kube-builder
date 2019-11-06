@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { DescriptorDocument } from '../store/descriptor';
 import { RootState } from '../store/root';
-import { PaneFactory } from './panes/PaneFactory';
+import { ObjectPane } from './panes/ObjectPane';
 
 type FormEditorProps = {
     descriptor: DescriptorDocument
@@ -17,7 +17,7 @@ class DescriptorEditorBase extends Component<FormEditorProps, {}> {
         return (
             <Accordion>
                 { descriptor.objects.map((object, index) => <AccordionPanel label={object.name} key={index}>
-                    <PaneFactory object={object} index={index} />
+                    <ObjectPane object={object} index={index} />
                 </AccordionPanel>) }
             </Accordion>
         )
