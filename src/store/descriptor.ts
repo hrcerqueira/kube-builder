@@ -8,7 +8,9 @@ export interface DescriptorDocument {
 
 const emptyDescriptor: DescriptorDocument = {
     objects: [
-        K8sKinds.instance.create(KindName.Deployment, "deployment 1")
+        K8sKinds.instance.create(KindName.Deployment, "deployment 1"),
+        K8sKinds.instance.create(KindName.Deployment, "deployment 2"),
+        K8sKinds.instance.create(KindName.Deployment, "deployment 3")
     ]
 };
 
