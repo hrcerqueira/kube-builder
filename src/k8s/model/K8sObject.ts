@@ -1,7 +1,18 @@
 export type K8sObject = {
     apiVersion: string | null;
     kind: string;
-    name: string
+    metadata: K8sMetadata
+}
+
+export type K8SMapEntry = {key: string, value: string};
+
+export const EMPTY_K8S_MAP_ENTRY = {key: '', value: ''};
+
+export type K8SMap = K8SMapEntry[];
+
+export type K8sMetadata = {
+    name: string;
+    annotations?: K8SMap
 }
 
 export type K8sObjectImpl = K8sObject & any;

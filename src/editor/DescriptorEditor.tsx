@@ -28,7 +28,7 @@ export const DescriptorEditor = () => {
     return (
         <Accordion multiple={true} onActive={setActive}>
             { descriptor.objects.map((object, index) =>
-                <AccordionPanel key={index} header={renderPanelHeader(object.name, object.kind, active.includes(index))}>
+                <AccordionPanel key={index} header={renderPanelHeader(object.metadata.name, object.kind, active.includes(index))}>
                     <ObjectPane object={object} index={index} />
                 </AccordionPanel>)
             }

@@ -21,12 +21,15 @@ const descriptor = createSlice({
         addObject: (document: DescriptorDocument, action: PayloadAction<K8sObjectImpl>) => {
             document.objects.push(action.payload);
         },
-        setObjectProperty(document: DescriptorDocument, { payload: { index, key, value }}: PayloadAction<{index: number, key: string, value: any}>) {
-            document.objects[index][key] = value;
+        setApiVersion: (document: DescriptorDocument, {payload: {index, value}}: PayloadAction<{index: number, value: string}>) => {
+            document.objects[index].apiVersion = value;
+        },
+        setMetadataProperty(document: DescriptorDocument, { payload: { index, key, value }}: PayloadAction<{index: number, key: string, value: any}>) {
+            document.objects[index].metadata[key] = value;
         }
     }
 });
 
-export const { addObject, setObjectProperty } = descriptor.actions;
+export const { addObject, setApiVersion, setMetadataProperty } = descriptor.actions;
 
 export default descriptor.reducer;

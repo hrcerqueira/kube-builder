@@ -30,7 +30,7 @@ export class K8sKinds {
         const descriptor: KindDescriptor<any> = this.kinds[kind];
 
         if (!descriptor) {
-            throw "unknown kind " + kind;
+            throw Error("unknown kind " + kind);
         }
 
         return descriptor;
@@ -42,7 +42,9 @@ export class K8sKinds {
         const apiVersion = descriptor.supportedVersions[0];
         return descriptor.create({
            apiVersion,
-            name,
+            metadata: {
+               name
+            },
             kind
         });
     }
