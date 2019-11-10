@@ -6,6 +6,7 @@ import { FormFieldHelper } from '../../components/FormFieldHelper';
 import { K8sKinds } from '../../k8s/K8sKinds';
 import { K8sObject, KindName } from '../../k8s/model/K8sObject';
 import { setApiVersion, setMetadataProperty } from '../../store/descriptor';
+import { createKubeLabelValidator } from '../../utils/validation';
 import { DeploymentPane } from './DeploymentPane';
 import { PaneProps } from './PaneProps';
 
@@ -18,13 +19,9 @@ const renderKindSpecificPane = (object: K8sObject, index: number) => {
     }
 }
 
-const validateName = (name: string) => {
-    if (/^[a-z0-9]([.\-a-z0-9]{0,251}[a-z0-9])?$/.test(name)) {
-        return;
-    }
-    return 'Kubernetes resources names can have names up to 253 characters long. The characters allowed in names are: digits (0-9), ' +
-        'lower case letters (a-z), -, and ., and must start and end with a digit or lower case letter';
-}
+const validateName = createKubeLabelValidator(253, 'Kubernetes resources names can have names up to 253 characters long. ' +
+    'The characters allowed in names are: digits (0-9), ' +
+    'lower case letters (a-z), -, and ., and must start and end with a digit or lower case letter');
 
 export const ObjectPane = ({object, object: {metadata: {name, namespace, annotations}, kind, apiVersion}, index}: PaneProps<K8sObject>) => {
     const dispatch = useDispatch();

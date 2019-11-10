@@ -3,6 +3,7 @@ import { FormTrash } from 'grommet-icons';
 import React, { useState } from 'react';
 import { EMPTY_K8S_MAP_ENTRY, K8SMap, K8SMapEntry } from '../k8s/model/K8sObject';
 import { flatten } from '../utils/array';
+import { validateAnnotationKey } from '../utils/validation';
 
 const AnnotationLine = ({line: {key, value}, onChange}:
                         {line: K8SMapEntry, onChange: (line: K8SMapEntry) => void}) => {
@@ -49,14 +50,27 @@ const validateUniqueKeys = (annotations: AnnotationsWIthId, errors: AnnotationEr
             addError(errors, id, 'Key must be unique');
         }
     })
-}
+};
 
-const validateAnnotations = (annotations: AnnotationsWIthId) => {
+const validateKeyFormat = (annotations: AnnotationsWIthId, updated: number, errors: AnnotationErrors) => {
+    const {line: {key}} = annotations.find(({id}) => id === updated) || { line: EMPTY_K8S_MAP_ENTRY };
+
+    if (!validateAnnotationKey(key)) {
+        addError(errors, updated, 'Valid annotation keys have two segments: ' +
+            'an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, ' +
+            'beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), ' +
+            'and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels ' +
+            'separated by dots (.), not longer than 253 characters in total, followed by a slash (/).');
+    }
+};
+
+const validateAnnotations = (annotations: AnnotationsWIthId, updated: number) => {
     const errors: AnnotationErrors = {};
 
     const withoutEmpty = annotations.slice(0, annotations.length - 1);
 
     validateUniqueKeys(withoutEmpty, errors);
+    validateKeyFormat(annotations, updated, errors);
 
     return errors;
 }
@@ -91,7 +105,7 @@ export const AnnotationsEditor = ({annotations, onChange}: {annotations: K8SMap,
 
         setCopy(newAnnotations);
 
-        const errors = validateAnnotations(newAnnotations);
+        const errors = validateAnnotations(newAnnotations, id);
 
         if (!Object.keys(errors).length) {
             onChange(prepareForCallback(newAnnotations));
