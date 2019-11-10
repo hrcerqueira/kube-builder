@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
 import { K8sKinds } from '../k8s/K8sKinds';
-import { K8sObjectImpl, KindName } from '../k8s/model/K8sObject';
+import { K8sMetadata, K8sObjectImpl, KindName } from '../k8s/model/K8sObject';
 
 export interface DescriptorDocument {
     objects: K8sObjectImpl[]
@@ -24,7 +24,7 @@ const descriptor = createSlice({
         setApiVersion: (document: DescriptorDocument, {payload: {index, value}}: PayloadAction<{index: number, value: string}>) => {
             document.objects[index].apiVersion = value;
         },
-        setMetadataProperty(document: DescriptorDocument, { payload: { index, key, value }}: PayloadAction<{index: number, key: string, value: any}>) {
+        setMetadataProperty(document: DescriptorDocument, { payload: { index, key, value }}: PayloadAction<{index: number, key: keyof K8sMetadata, value: any}>) {
             document.objects[index].metadata[key] = value;
         }
     }

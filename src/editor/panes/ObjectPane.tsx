@@ -1,4 +1,4 @@
-import { Form, Select, TextInput } from 'grommet';
+import { Form } from 'grommet';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AnnotationsEditor } from '../../components/AnnotationsEditor';
@@ -19,14 +19,14 @@ const renderKindSpecificPane = (object: K8sObject, index: number) => {
 }
 
 const validateName = (name: string) => {
-    if (/^[a-z0-9]([.\-a-z0-9]{1,251}[a-z0-9])?$/.test(name)) {
+    if (/^[a-z0-9]([.\-a-z0-9]{0,251}[a-z0-9])?$/.test(name)) {
         return;
     }
-    return 'Kubernetes resources can have names up to 253 characters long. The characters allowed in names are: digits (0-9), ' +
+    return 'Kubernetes resources names can have names up to 253 characters long. The characters allowed in names are: digits (0-9), ' +
         'lower case letters (a-z), -, and ., and must start and end with a digit or lower case letter';
 }
 
-export const ObjectPane = ({object, object: {metadata: {name, annotations}, kind, apiVersion}, index}: PaneProps<K8sObject>) => {
+export const ObjectPane = ({object, object: {metadata: {name, namespace, annotations}, kind, apiVersion}, index}: PaneProps<K8sObject>) => {
     const dispatch = useDispatch();
     const versions = K8sKinds.instance.supportedVersions(kind);
 
@@ -37,21 +37,21 @@ export const ObjectPane = ({object, object: {metadata: {name, annotations}, kind
             value={name}
             validate={validateName}
             onValidValue={value => dispatch(setMetadataProperty({index, key: 'name', value}))}
-            buildField={(value, onFieldChange) => <TextInput
-                value={value}
-                onChange={({target: { value }}: any) => onFieldChange(value)}
-            />}
+        />
+        <FormFieldHelper
+            name={"namespace"}
+            label={"Namespace"}
+            value={namespace || ''}
+            validate={validateName}
+            onValidValue={value => dispatch(setMetadataProperty({index, key: 'namespace', value}))}
         />
         <FormFieldHelper
             name={"version"}
             label={"API Version"}
             value={apiVersion || ''}
             onValidValue={value => dispatch(setApiVersion({index, value}))}
-            buildField={(value, onFieldChange) => <Select
-                options={versions}
-                value={value}
-                onChange={({ option }: any) => onFieldChange(option)}
-            />}
+            fieldType={'select'}
+            fieldOptions={{options: versions}}
         />
         <FormFieldHelper
             name={"annotations"}
