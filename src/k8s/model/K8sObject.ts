@@ -13,7 +13,8 @@ export type K8SMap = K8SMapEntry[];
 export type K8sMetadata = {
     name: string;
     namespace?: string;
-    annotations?: K8SMap
+    annotations?: K8SMap,
+    labels?: K8SMap
 }
 
 export type K8sObjectImpl = K8sObject & any;
